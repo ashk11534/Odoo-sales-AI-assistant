@@ -1,0 +1,27 @@
+<t t-name="odoo_sales_ai_assistant.RAGChat" owl="1">
+    <div class="o_rag_chat">
+        <div class="chat-header">
+            🧠 Sales AI Assistant
+        </div>
+
+        <div class="chat-body">
+            <t t-foreach="state.messages" t-as="msg" t-key="msg">
+                <div t-att-class="'msg ' + msg.role">
+                    <t t-esc="msg.text"/>
+                </div>
+            </t>
+
+            <div t-if="state.loading" class="msg ai">
+                Typing...
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text"
+                   t-model="state.input"
+                   placeholder="Ask about sales..."
+                   t-on-keydown="onKeydown"/>
+            <button t-on-click="sendMessage">Send</button>
+        </div>
+    </div>
+</t>

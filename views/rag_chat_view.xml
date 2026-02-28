@@ -1,0 +1,15 @@
+<odoo>
+    <record id="action_sales_rag_chat" model="ir.actions.client">
+        <field name="name">Sales AI Chat</field>
+        <field name="tag">sales_rag_chat_action</field>
+    </record>
+
+    <menuitem id="menu_sales_rag"
+              name="Sales AI"
+              parent="sale.sale_menu_root"/>
+
+    <menuitem id="menu_sales_rag_chat"
+              name="Sales AI Chat"
+              parent="menu_sales_rag"
+              action="action_sales_rag_chat"/>
+</odoo>
