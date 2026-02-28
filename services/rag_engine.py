@@ -24,15 +24,13 @@ class RAGEngine:
         self.store.save(embeddings, chunks)
 
     def ask(self, question):
-        # ✅ if index not built, stop
         if not self.store.exists():
-            return "❌ RAG index not built yet. Please build first."
+            return "RAG index not built yet. Please build first."
 
         index, chunks = self.store.load()
 
         q_vec = self.embedder.encode([question]).astype("float32")
 
-        # 🔥 dynamic retrieval (no fixed k)
         _, ids = index.search(q_vec, index.ntotal)
 
         context = "\n".join([chunks[i] for i in ids[0]])
@@ -59,4 +57,4 @@ Answer:
                 "stream": False
             }
         )
-        return res.json().get("response", "⚠️ AI error")
+        return res.json().get("response", "AI error")

@@ -17,10 +17,8 @@ class VectorStore:
         index = faiss.IndexFlatL2(dim)
         index.add(embeddings.astype("float32"))
 
-        # ✅ Save FAISS index
         faiss.write_index(index, INDEX_FILE)
 
-        # ✅ Save text chunks
         with open(META_FILE, "wb") as f:
             pickle.dump(chunks, f)
 

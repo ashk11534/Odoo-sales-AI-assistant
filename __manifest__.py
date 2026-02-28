@@ -6,8 +6,7 @@
     "author": "Ashik",
     "depends": ["sale", "account"],
     "data": [
-        "views/rag_chat_view.xml",
-        "views/rag_menu.xml"
+        "views/rag_chat_view.xml"
     ],
     "assets": {
         "web.assets_backend": [
